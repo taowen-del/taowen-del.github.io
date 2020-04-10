@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  
+  <title>Hello Git - TAOTAO</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="个人博客,hexo">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/png" />
+  <meta name="description" content="1.0 Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello Git">
+<meta property="og:url" content="http://yoursite.com/2020/02/13/Git%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="TAOTAO">
+<meta property="og:description" content="1.0 Git">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-13T12:46:25.000Z">
+<meta property="article:modified_time" content="2020-04-10T13:22:28.020Z">
+<meta property="article:author" content="Tao Wen">
+<meta property="article:tag" content="hexo 博客">
+<meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/nexmoe/nexmoe.github.io@latest/css/style.css,npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css" crossorigin>
+  
+  <!--<link rel="stylesheet" href="/css/style.css?v=1586531848778">-->
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(http://file02.16sucai.com/d/file/2014/0704/e53c868ee9e8e7b28c424b56afe2066d.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Tao Wen" class="mdui-btn mdui-btn-icon"><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1101505700,474052209&amp;fm=26&amp;gp=0.jpg" alt="Tao Wen"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Tao Wen">
+            <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1101505700,474052209&amp;fm=26&amp;gp=0.jpg" alt="Tao Wen" alt="Tao Wen">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>4</div>
+        <div><span>标签</span>0</div>
+        <div><span>分类</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=https://taowen-del.github.io/" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/353507487" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/taowen-del/taowen-del.github.io" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+
+  
+  
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2020 Tao Wen
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+  
+      <div class="nexmoe-post-cover" style="padding-bottom: 62.5%;"> 
+          <img data-src="http://attach.bbs.miui.com/forum/201309/13/194337seg4g43ggi9r4ge4.jpg" data-sizes="auto" alt="Hello Git" class="lazyload">
+          <h1>Hello Git</h1>
+      </div>
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年02月13日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.9k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+</div>
+
+  <div class="nexmoe-post-right">
+    
+  </div>
+
+  <article>
+    <h3 id="1-0-Git"><a href="#1-0-Git" class="headerlink" title="1.0 Git"></a>1.0 Git</h3><a id="more"></a>
+
+<p>​ 在官网下载安装，，不需要管安装版本</p>
+<p>​ 安装完成，无桌面图标，任意项目中右键，出现 git GUI here 和 git bash here 代表安装成功</p>
+<p>​</p>
+<p>​ 在使用 git 之前，需要指定操作的作者信息</p>
+<pre><code>git config --global user.name &#39;Kris Wu&#39;
+git config --global user.email &#39;xiaoming@163.com&#39;</code></pre><p>​ 注意：邮箱只是需要格式，不是一定要正确的邮箱，后面的引号可以加可以不加，如果有空格一定要加</p>
+<p>​ 使用 git 的操作是要干什么</p>
+<p>​ git 是进行版本控制的，也就是说，将来我们的项目会每天修改，每天增加新功能，那么导致一些问题，就是如果不记录版本或者没有人帮我们存储进度，那么要返回到之前的操作或者和其他同事协同开发就会很复杂。</p>
+<p>​</p>
+<p>​ 通过 git 工具，可以帮我们在本地项目中生成一个仓库，这个仓库可以记录我们每次修改后的提交信息，记录我们每一次的操作，那么如果想回到哪一次的操作，即可根据日志的 id 回到那一次，而不是像以前那样撤销，因为有可能是昨天的操作，无法撤销了。</p>
+<h3 id="2-0-第一次创建项目"><a href="#2-0-第一次创建项目" class="headerlink" title="2.0 第一次创建项目"></a>2.0 第一次创建项目</h3><p>​ 一定要在当前项目中右键，打开 git bash here</p>
+<pre><code>git init
+git status
+git add ./
+git commit -m &#39;第一次提交&#39;
+git log</code></pre><p>​ 从暂存区恢复文件覆盖工作区的文件</p>
+<pre><code>git checkout &#39;指定的文件名称或者路径&#39;</code></pre><p>​</p>
+<p>​ 工作区是指的编辑器开发的地方，</p>
+<p>​ 暂存区是临时存储的地方，可以有一些小操作</p>
+<p>​ 存储区，是每一次 add 和 commit 进行存档的地方，每次存档的内容由仓库分配</p>
+<pre><code>git rm --cached 指定的文件</code></pre><p>​ 把暂存区的文件从该区撤销到工作区，但是如果撤销下来，文件是新建的，就会显示为红色</p>
+<p>​ 所以一般如果不需要添加到仓库的文件，需要设置忽略名单</p>
+<pre><code>git log --oneline             记录简洁的版本号和提交信息
+git reset --hard 指定的版本号   版本回退
+git reflog                    所有的提交信息</code></pre><p>​ 可以在任意版本穿梭</p>
+<h3 id="3-0-分支"><a href="#3-0-分支" class="headerlink" title="3.0 分支"></a>3.0 分支</h3><p>​ 假设在一条生产线上，需要生产一台手机</p>
+<p>​ 如果由单个人来完成，时间成本会比较高，一个人处理的业务量也会比较大</p>
+<p>​ 创建分支，也就是创建新的生产线，这条生产线的内容和上一个一样</p>
+<p>​ 那么上个人就可以交付一部分的功能由此人完成</p>
+<p>​ 在最终，二者进行合并功能，即可完成此次的开发，节省了效率</p>
+<pre><code>git branch              查看当前的分支
+git branch 分支名      创建新分支
+git checkout 分支名    切换分支
+git merge 分支名</code></pre><p>细节： 在每一次切换分支的时候，一定要对当前的代码进行存档 add commit</p>
+<p>注意： 如果进入了奇怪的模式，试试英文模式下 :q 或者 ctrl +c 再或者 esc</p>
+<blockquote>
+<h5 id="只有-master-主分支上才可以合并分支！！！"><a href="#只有-master-主分支上才可以合并分支！！！" class="headerlink" title="只有 master 主分支上才可以合并分支！！！"></a>只有 master 主分支上才可以合并分支！！！</h5></blockquote>
+<p>只有在 master 分支上才可以删除，只有在提交之后才可以删除，不然就强制删除</p>
+<blockquote>
+<h4 id="情景：如果在当前分支开发，领导临时通知测试功能，需要暂停开发"><a href="#情景：如果在当前分支开发，领导临时通知测试功能，需要暂停开发" class="headerlink" title="情景：如果在当前分支开发，领导临时通知测试功能，需要暂停开发"></a>情景：如果在当前分支开发，领导临时通知测试功能，需要暂停开发</h4></blockquote>
+<p>​ 有可能之前写的东西有 bug，有可能要给别人演示功能，如果我们分支操作不存档，在主分支就会提示有未完成的功能无法合并或者提交到远程仓库等等…</p>
+<p>​ 在当前的分支上暂停开发，保存代码</p>
+<pre><code>git add ./      添加到暂存区
+git stash       保存当前的状态</code></pre><p>​ 去参与到测试或者其他功能创建</p>
+<p>​ 如果完成了所有操作，恢复之前的开发进度</p>
+<pre><code>git stash pop    恢复开发进度</code></pre><p>​ 有人说，直接 add 和 commit 就行了，就没这么多事儿了，确实</p>
+<p>​ 不过也有可能，你提交的东西还是未完成的，执行的话可能会报错…</p>
+<h3 id="4-0-github-的操作"><a href="#4-0-github-的操作" class="headerlink" title="4.0 github 的操作"></a>4.0 github 的操作</h3><p>​ 注册 - 激活 - 创建仓库，千万不要点击创建 readME 文件</p>
+<p>​ 线下创建的仓库，和线上默认的仓库如果同时存在，会导致我们的项目上传不上去</p>
+<p>​ 而默认创建 README 文件，就会在远程仓库创建一个默认的仓库</p>
+<p>​ 我们的项目默认都是公开的，所有人都可以克隆或者下载，但是不是所有人都可以修改</p>
+<p>​ 在开发中，一般为了多人协同开发，但是账号密码也不会共享，所以会有多个账号合作</p>
+<p>​ 在主开发人员的项目中，点击 settings 找到 coll 开头的单词，添加另外一个人的账号</p>
+<p>​ 将邀请链接发给另外一个人，这样，他同意邀请就可以参与到项目的提交了</p>
+<p>​ 如果另外的这个人要提交，也是要输入自己的账号和密码的</p>
+<blockquote>
+<h4 id="凡凡创建了仓库，搭建好了项目的基本环境，上传到了远程仓库"><a href="#凡凡创建了仓库，搭建好了项目的基本环境，上传到了远程仓库" class="headerlink" title="凡凡创建了仓库，搭建好了项目的基本环境，上传到了远程仓库"></a>凡凡创建了仓库，搭建好了项目的基本环境，上传到了远程仓库</h4></blockquote>
+<pre><code>git init                              初始化仓库
+git add ./                            添加到暂存区
+git commit -m &#39;初始化项目&#39;                             添加到存储区
+
+git remote add origin 项目地址         设置变量指向远端映射的地址
+git push -u origin master             记住当前的变量，将来简洁推送</code></pre><p>​ 如果是第一次提交项目，需要在弹出的面板中输入账号和密码</p>
+<p>​ 如果输入错误，也会记录，导致上传不成功。需要在控制面板中找到 windows 凭证管理器删除记录</p>
+<p>​ 有时候因为网络原因也会上传不成功，切换网络试试</p>
+<p>​ 如果担心是密码的原因，可以在网页上退出登录，在重新登录试试</p>
+<blockquote>
+<h4 id="坤坤是新来的，需要获取线上的项目"><a href="#坤坤是新来的，需要获取线上的项目" class="headerlink" title="坤坤是新来的，需要获取线上的项目"></a>坤坤是新来的，需要获取线上的项目</h4></blockquote>
+<pre><code>git clone 项目地址
+
+git branch kunkun
+git checkout kunkun
+
+// 或者一行一步到位
+// git checkout -b kunkun
+
+// 如果完成了新功能
+git add ./
+git commit -m &#39;坤坤完成了新功能&#39;
+
+// 或者一行一步到位
+git commit --all -m &#39;如果是新建的文件就不行，只有是基于源文件修改才可以&#39;
+
+git remote add myset 远程地址
+git push -u myset kunkun
+
+// 回到主分支合并
+git checkout master
+git merge kunkun
+
+git push
+</code></pre><p>​</p>
+<h5 id="配置个人主页"><a href="#配置个人主页" class="headerlink" title="配置个人主页"></a>配置个人主页</h5><p>​ 新建仓库，仓库的名称是 账号.github.io</p>
+<p>​ 将本地的代码上传到远程仓库，然后访问地址 账号.github.io 有时候网不好，多刷新刷新</p>
+<p>​ 如果访问不了，一定要把 http 换成 https，有些浏览器默认用 http 访问</p>
+<p>​ 这里的个人主页只能上传静态的资源文件，不能上传全栈项目，后端文件在这里运行不起来</p>
+<p>​ 如果你有线上的服务器存储和运行了后端文件，或者你项目中是爬取的数据，就可以运行</p>
+<h5 id="演示码云上传项目"><a href="#演示码云上传项目" class="headerlink" title="演示码云上传项目"></a>演示码云上传项目</h5><p>​ 过程和 GitHub 上传项目是一样的</p>
+<p>​ 在 GitHub 中删除项目需要找到 settings 的最后一项</p>
+<p>​ 在码云中删除项目，找到 delete 专栏</p>
+<p>​ 分支的项目上传完毕之后，可以在上传项目的分支结构中查看</p>
+<p>​</p>
+
+  </article>
+
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    
+      
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>Tao Wen<br>
+    <strong>本文链接：</strong><a href="http://yoursite.com/2020/02/13/Git%E4%BD%BF%E7%94%A8/" title="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;13&#x2F;Git%E4%BD%BF%E7%94%A8&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;13&#x2F;Git%E4%BD%BF%E7%94%A8&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+    
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '474c0a23887aea2ee4fb',
+        clientSecret: '4e25e6517ed68b2e81031edd1da1b4493d793e25',
+        id: window.location.pathname,
+        repo: 'taowen-del.github.io',
+        owner: 'taowen',
+        admin: 'taowen'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js,gh/nexmoe/nexmoe.github.io@latest/js/app.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!--<script src="/js/app.js?v=1586531848780"></script>-->
+
+
+    <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+
+ 
+<script> 
+!function(e,t,a){function n(){c(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),o(),r()}function r(){for(var e=0;e<d.length;e++)d[e].alpha<=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText="left:"+d[e].x+"px;top:"+d[e].y+"px;opacity:"+d[e].alpha+";transform:scale("+d[e].scale+","+d[e].scale+") rotate(45deg);background:"+d[e].color+";z-index:99999");requestAnimationFrame(r)}function o(){var t="function"==typeof e.onclick&&e.onclick;e.onclick=function(e){t&&t(),i(e)}}function i(e){var a=t.createElement("div");a.className="heart",d.push({el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()}),t.body.appendChild(a)}function c(e){var a=t.createElement("style");a.type="text/css";try{a.appendChild(t.createTextNode(e))}catch(t){a.styleSheet.cssText=e}t.getElementsByTagName("head")[0].appendChild(a)}function s(){return"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}var d=[];e.requestAnimationFrame=function(){return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,1e3/60)}}(),n()}(window,document);
+</script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
