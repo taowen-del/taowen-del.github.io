@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/nexmoe/nexmoe.github.io@latest/css/style.css,npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css" crossorigin>
   
-  <!--<link rel="stylesheet" href="/css/style.css?v=1586528204208">-->
+  <!--<link rel="stylesheet" href="/css/style.css?v=1586530879065">-->
 
   
 <meta name="generator" content="Hexo 4.2.0"></head>
@@ -151,38 +151,36 @@
 <p>​ 安装完成，无桌面图标，任意项目中右键，出现 git GUI here 和 git bash here 代表安装成功</p>
 <p>​</p>
 <p>​ 在使用 git 之前，需要指定操作的作者信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &#39;Kris Wu&#39;</span><br><span class="line">git config --global user.email &#39;xiaoming@163.com&#39;</span><br></pre></td></tr></table></figure>
-
-<p>​ 注意：邮箱只是需要格式，不是一定要正确的邮箱，后面的引号可以加可以不加，如果有空格一定要加</p>
+<pre><code>git config --global user.name &#39;Kris Wu&#39;
+git config --global user.email &#39;xiaoming@163.com&#39;</code></pre><p>​ 注意：邮箱只是需要格式，不是一定要正确的邮箱，后面的引号可以加可以不加，如果有空格一定要加</p>
 <p>​ 使用 git 的操作是要干什么</p>
 <p>​ git 是进行版本控制的，也就是说，将来我们的项目会每天修改，每天增加新功能，那么导致一些问题，就是如果不记录版本或者没有人帮我们存储进度，那么要返回到之前的操作或者和其他同事协同开发就会很复杂。</p>
 <p>​</p>
 <p>​ 通过 git 工具，可以帮我们在本地项目中生成一个仓库，这个仓库可以记录我们每次修改后的提交信息，记录我们每一次的操作，那么如果想回到哪一次的操作，即可根据日志的 id 回到那一次，而不是像以前那样撤销，因为有可能是昨天的操作，无法撤销了。</p>
 <h3 id="2-0-第一次创建项目"><a href="#2-0-第一次创建项目" class="headerlink" title="2.0 第一次创建项目"></a>2.0 第一次创建项目</h3><p>​ 一定要在当前项目中右键，打开 git bash here</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git status</span><br><span class="line">git add .&#x2F;</span><br><span class="line">git commit -m &#39;第一次提交&#39;</span><br><span class="line">git log</span><br></pre></td></tr></table></figure>
-
-<p>​ 从暂存区恢复文件覆盖工作区的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &#39;指定的文件名称或者路径&#39;</span><br></pre></td></tr></table></figure>
-
-<p>​</p>
+<pre><code>git init
+git status
+git add ./
+git commit -m &#39;第一次提交&#39;
+git log</code></pre><p>​ 从暂存区恢复文件覆盖工作区的文件</p>
+<pre><code>git checkout &#39;指定的文件名称或者路径&#39;</code></pre><p>​</p>
 <p>​ 工作区是指的编辑器开发的地方，</p>
 <p>​ 暂存区是临时存储的地方，可以有一些小操作</p>
 <p>​ 存储区，是每一次 add 和 commit 进行存档的地方，每次存档的内容由仓库分配</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached 指定的文件</span><br></pre></td></tr></table></figure>
-
-<p>​ 把暂存区的文件从该区撤销到工作区，但是如果撤销下来，文件是新建的，就会显示为红色</p>
+<pre><code>git rm --cached 指定的文件</code></pre><p>​ 把暂存区的文件从该区撤销到工作区，但是如果撤销下来，文件是新建的，就会显示为红色</p>
 <p>​ 所以一般如果不需要添加到仓库的文件，需要设置忽略名单</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline             记录简洁的版本号和提交信息</span><br><span class="line">git reset --hard 指定的版本号   版本回退</span><br><span class="line">git reflog                    所有的提交信息</span><br></pre></td></tr></table></figure>
-
-<p>​ 可以在任意版本穿梭</p>
+<pre><code>git log --oneline             记录简洁的版本号和提交信息
+git reset --hard 指定的版本号   版本回退
+git reflog                    所有的提交信息</code></pre><p>​ 可以在任意版本穿梭</p>
 <h3 id="3-0-分支"><a href="#3-0-分支" class="headerlink" title="3.0 分支"></a>3.0 分支</h3><p>​ 假设在一条生产线上，需要生产一台手机</p>
 <p>​ 如果由单个人来完成，时间成本会比较高，一个人处理的业务量也会比较大</p>
 <p>​ 创建分支，也就是创建新的生产线，这条生产线的内容和上一个一样</p>
 <p>​ 那么上个人就可以交付一部分的功能由此人完成</p>
 <p>​ 在最终，二者进行合并功能，即可完成此次的开发，节省了效率</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git branch              查看当前的分支</span><br><span class="line">git branch 分支名      创建新分支</span><br><span class="line">git checkout 分支名    切换分支</span><br><span class="line">git merge 分支名</span><br></pre></td></tr></table></figure>
-
-<p>细节： 在每一次切换分支的时候，一定要对当前的代码进行存档 add commit</p>
+<pre><code>git branch              查看当前的分支
+git branch 分支名      创建新分支
+git checkout 分支名    切换分支
+git merge 分支名</code></pre><p>细节： 在每一次切换分支的时候，一定要对当前的代码进行存档 add commit</p>
 <p>注意： 如果进入了奇怪的模式，试试英文模式下 :q 或者 ctrl +c 再或者 esc</p>
 <blockquote>
 <h5 id="只有-master-主分支上才可以合并分支！！！"><a href="#只有-master-主分支上才可以合并分支！！！" class="headerlink" title="只有 master 主分支上才可以合并分支！！！"></a>只有 master 主分支上才可以合并分支！！！</h5></blockquote>
@@ -191,13 +189,10 @@
 <h4 id="情景：如果在当前分支开发，领导临时通知测试功能，需要暂停开发"><a href="#情景：如果在当前分支开发，领导临时通知测试功能，需要暂停开发" class="headerlink" title="情景：如果在当前分支开发，领导临时通知测试功能，需要暂停开发"></a>情景：如果在当前分支开发，领导临时通知测试功能，需要暂停开发</h4></blockquote>
 <p>​ 有可能之前写的东西有 bug，有可能要给别人演示功能，如果我们分支操作不存档，在主分支就会提示有未完成的功能无法合并或者提交到远程仓库等等…</p>
 <p>​ 在当前的分支上暂停开发，保存代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .&#x2F;      添加到暂存区</span><br><span class="line">git stash       保存当前的状态</span><br></pre></td></tr></table></figure>
-
-<p>​ 去参与到测试或者其他功能创建</p>
+<pre><code>git add ./      添加到暂存区
+git stash       保存当前的状态</code></pre><p>​ 去参与到测试或者其他功能创建</p>
 <p>​ 如果完成了所有操作，恢复之前的开发进度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash pop    恢复开发进度</span><br></pre></td></tr></table></figure>
-
-<p>​ 有人说，直接 add 和 commit 就行了，就没这么多事儿了，确实</p>
+<pre><code>git stash pop    恢复开发进度</code></pre><p>​ 有人说，直接 add 和 commit 就行了，就没这么多事儿了，确实</p>
 <p>​ 不过也有可能，你提交的东西还是未完成的，执行的话可能会报错…</p>
 <h3 id="4-0-github-的操作"><a href="#4-0-github-的操作" class="headerlink" title="4.0 github 的操作"></a>4.0 github 的操作</h3><p>​ 注册 - 激活 - 创建仓库，千万不要点击创建 readME 文件</p>
 <p>​ 线下创建的仓库，和线上默认的仓库如果同时存在，会导致我们的项目上传不上去</p>
@@ -209,17 +204,41 @@
 <p>​ 如果另外的这个人要提交，也是要输入自己的账号和密码的</p>
 <blockquote>
 <h4 id="凡凡创建了仓库，搭建好了项目的基本环境，上传到了远程仓库"><a href="#凡凡创建了仓库，搭建好了项目的基本环境，上传到了远程仓库" class="headerlink" title="凡凡创建了仓库，搭建好了项目的基本环境，上传到了远程仓库"></a>凡凡创建了仓库，搭建好了项目的基本环境，上传到了远程仓库</h4></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init                              初始化仓库</span><br><span class="line">git add .&#x2F;                            添加到暂存区</span><br><span class="line">git commit -m &#39;初始化项目&#39;							 添加到存储区</span><br><span class="line"></span><br><span class="line">git remote add origin 项目地址         设置变量指向远端映射的地址</span><br><span class="line">git push -u origin master             记住当前的变量，将来简洁推送</span><br></pre></td></tr></table></figure>
+<pre><code>git init                              初始化仓库
+git add ./                            添加到暂存区
+git commit -m &#39;初始化项目&#39;                             添加到存储区
 
-<p>​ 如果是第一次提交项目，需要在弹出的面板中输入账号和密码</p>
+git remote add origin 项目地址         设置变量指向远端映射的地址
+git push -u origin master             记住当前的变量，将来简洁推送</code></pre><p>​ 如果是第一次提交项目，需要在弹出的面板中输入账号和密码</p>
 <p>​ 如果输入错误，也会记录，导致上传不成功。需要在控制面板中找到 windows 凭证管理器删除记录</p>
 <p>​ 有时候因为网络原因也会上传不成功，切换网络试试</p>
 <p>​ 如果担心是密码的原因，可以在网页上退出登录，在重新登录试试</p>
 <blockquote>
 <h4 id="坤坤是新来的，需要获取线上的项目"><a href="#坤坤是新来的，需要获取线上的项目" class="headerlink" title="坤坤是新来的，需要获取线上的项目"></a>坤坤是新来的，需要获取线上的项目</h4></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">git clone 项目地址</span><br><span class="line"></span><br><span class="line">git branch kunkun</span><br><span class="line">git checkout kunkun</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 或者一行一步到位</span><br><span class="line">&#x2F;&#x2F; git checkout -b kunkun</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 如果完成了新功能</span><br><span class="line">git add .&#x2F;</span><br><span class="line">git commit -m &#39;坤坤完成了新功能&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 或者一行一步到位</span><br><span class="line">git commit --all -m &#39;如果是新建的文件就不行，只有是基于源文件修改才可以&#39;</span><br><span class="line"></span><br><span class="line">git remote add myset 远程地址</span><br><span class="line">git push -u myset kunkun</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 回到主分支合并</span><br><span class="line">git checkout master</span><br><span class="line">git merge kunkun</span><br><span class="line"></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<pre><code>git clone 项目地址
 
-<p>​</p>
+git branch kunkun
+git checkout kunkun
+
+// 或者一行一步到位
+// git checkout -b kunkun
+
+// 如果完成了新功能
+git add ./
+git commit -m &#39;坤坤完成了新功能&#39;
+
+// 或者一行一步到位
+git commit --all -m &#39;如果是新建的文件就不行，只有是基于源文件修改才可以&#39;
+
+git remote add myset 远程地址
+git push -u myset kunkun
+
+// 回到主分支合并
+git checkout master
+git merge kunkun
+
+git push
+</code></pre><p>​</p>
 <h5 id="配置个人主页"><a href="#配置个人主页" class="headerlink" title="配置个人主页"></a>配置个人主页</h5><p>​ 新建仓库，仓库的名称是 账号.github.io</p>
 <p>​ 将本地的代码上传到远程仓库，然后访问地址 账号.github.io 有时候网不好，多刷新刷新</p>
 <p>​ 如果访问不了，一定要把 http 换成 https，有些浏览器默认用 http 访问</p>
@@ -273,7 +292,7 @@
   </div>
   <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js,gh/nexmoe/nexmoe.github.io@latest/js/app.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<!--<script src="/js/app.js?v=1586528204211"></script>-->
+<!--<script src="/js/app.js?v=1586530879068"></script>-->
 
 
     <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
