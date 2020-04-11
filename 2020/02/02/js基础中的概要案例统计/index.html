@@ -1,25 +1,413 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hello js | TAOTAO</title><meta name="description" content="Hello js"><meta name="author" content="Tao Wen"><meta name="copyright" content="Tao Wen"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Hello js"><meta name="twitter:description" content="Hello js"><meta name="twitter:image" content="http://i0.hdslb.com/bfs/article/b313e6cdac46bb9da526521574147c71f89f41f0.jpg"><meta property="og:type" content="article"><meta property="og:title" content="Hello js"><meta property="og:url" content="http://yoursite.com/2020/02/02/js%E5%9F%BA%E7%A1%80%E4%B8%AD%E7%9A%84%E6%A6%82%E8%A6%81%E6%A1%88%E4%BE%8B%E7%BB%9F%E8%AE%A1/"><meta property="og:site_name" content="TAOTAO"><meta property="og:description" content="Hello js"><meta property="og:image" content="http://i0.hdslb.com/bfs/article/b313e6cdac46bb9da526521574147c71f89f41f0.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
 
-block content
-  article#post(class="")
-    #article-container!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css" ><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://yoursite.com/2020/02/02/js%E5%9F%BA%E7%A1%80%E4%B8%AD%E7%9A%84%E6%A6%82%E8%A6%81%E6%A1%88%E4%BE%8B%E7%BB%9F%E8%AE%A1/"><link rel="prev" title="JS 常见操作" href="http://yoursite.com/2020/02/13/JS%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/"><link rel="next" title="links" href="http://yoursite.com/2019/01/13/link/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="TAOTAO" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础-js-案例"><span class="toc-number">1.</span> <span class="toc-text">基础 js 案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-交换两个变量的值"><span class="toc-number">2.</span> <span class="toc-text">1.交换两个变量的值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-数值的最大值-最小值"><span class="toc-number"></span> <span class="toc-text">2.数值的最大值,最小值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-闰年平年的判断"><span class="toc-number"></span> <span class="toc-text">3.闰年平年的判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-判断语句的用法"><span class="toc-number"></span> <span class="toc-text">3.判断语句的用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-for-循环的基本使用"><span class="toc-number"></span> <span class="toc-text">4.for 循环的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-while-循环的使用"><span class="toc-number"></span> <span class="toc-text">5.while 循环的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-do-while-循环的使用"><span class="toc-number"></span> <span class="toc-text">6.do while 循环的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-continue-和-break-的用法"><span class="toc-number"></span> <span class="toc-text">6.continue 和 break 的用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-循环中的算法使用"><span class="toc-number"></span> <span class="toc-text">7.循环中的算法使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-将一些算法封装成函数"><span class="toc-number"></span> <span class="toc-text">8.将一些算法封装成函数</span></a></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(http://i0.hdslb.com/bfs/article/b313e6cdac46bb9da526521574147c71f89f41f0.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">TAOTAO</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">Hello js</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-02-02 20:46:25"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-02-02</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-04-10 21:22:27"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-04-10</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h3 id="基础-js-案例"><a href="#基础-js-案例" class="headerlink" title="基础 js 案例"></a>基础 js 案例</h3><a id="more"></a>
+
+<h3 id="1-交换两个变量的值"><a href="#1-交换两个变量的值" class="headerlink" title="1.交换两个变量的值"></a>1.交换两个变量的值</h3><pre><code class="javascript">        var apple1 = &#39;青苹果&#39;;
+        var apple2 = &#39;红苹果&#39;;
+        var temp = &#39;&#39;;
+        temp = apple1;
+        apple1 = apple2;
+        apple2 = temp;
+        console.log(apple1, apple2);
+
+**</code></pre>
+<h2 id="2-数值的最大值-最小值"><a href="#2-数值的最大值-最小值" class="headerlink" title="2.数值的最大值,最小值"></a>2.数值的最大值,最小值</h2><pre><code class="javascript">      console.log(Number.MAX_VALUE);
+      console.log(Number.MIN_VALUE);
+      console.log(Number.MAX_VALUE * 2);//无穷大
+      console.log(-Number.MAX_VALUE * 2);//无穷小
+
+**</code></pre>
+<h2 id="3-闰年平年的判断"><a href="#3-闰年平年的判断" class="headerlink" title="3.闰年平年的判断"></a>3.闰年平年的判断</h2><pre><code class="javascript">  //4年一闰,百年不闰,400年再闰,能被四整除且不能被100整除或能被400整除
+              let year =prompt(&#39;请输入年份&#39;);
+              if(year%4==0&amp;&amp;year%100!=0||year%400==0){
+                  alert(&#39;你输入的是闰年&#39;)
+              }else{
+                 alert(&#39; 你输入的是平年&#39;)
+              }
+
+**</code></pre>
+<h2 id="3-判断语句的用法"><a href="#3-判断语句的用法" class="headerlink" title="3.判断语句的用法"></a>3.判断语句的用法</h2><pre><code class="javascript">//1.if的用法适用于范围的判断
+    let score=prompt(&#39;请输入分数&#39;);
+              if(score&gt;=90){
+                  alert(&#39;A&#39;);
+              }else if(score&gt;=80){
+                  alert(&#39;B&#39;)
+              }else if(score&gt;=70){
+                  alert(&#39;C&#39;)
+              }else if(score&gt;=60){
+                  alert(&#39;D&#39;)
+              }else{
+                  alert(&#39;E&#39;)
+              }
+
+//2.switch适用于得知具体的条件,提高速率,直接找到相匹配的执行
+let fruit = prompt(&#39;请输入水果&#39;);
+            switch (fruit) {
+                case &#39;苹果&#39;:
+                    alert(&#39;3.5一斤&#39;);
+                    break;
+                case &#39;榴莲&#39;:
+                    alert(&#39;78一斤&#39;);
+                    break;
+                case &#39;香蕉&#39;:
+                    alert(&#39;2一斤&#39;);
+                    break;
+                default:{
+                    alert(&#39;没有此水果&#39;)
+                }
+            }
+ //3.三元表达式
+   let num = prompt(&#39;请输入数字&#39;);
+   //num小于10吗,小于num前面补0,否则输出num
+   alert(num &lt; 10 ? +&#39;0&#39; + num : num);
+**</code></pre>
+<h2 id="4-for-循环的基本使用"><a href="#4-for-循环的基本使用" class="headerlink" title="4.for 循环的基本使用"></a>4.for 循环的基本使用</h2><pre><code class="javascript">//4.1.  4年一闰,百年不闰,400年再闰,能被四整除且不能被100整除或能被400整除
+              let year =prompt(&#39;请输入年份&#39;);
+              if(year%4==0&amp;&amp;year%100!=0||year%400==0){
+                  alert(&#39;你输入的是闰年&#39;);
+              }else{
+                 alert(&#39; 你输入的是平年&#39;);
+              }
+//4.2   求1-100之间的奇数,偶数的和
+         var odd = 0;
+         var even = 0;
+         // 偶数,余数0
+         for (var i = 0; i &lt;= 100; i++) {
+             if (i % 2 == 0) {
+                 even += i;
+             } else {
+                 odd += i;
+             }
+         }
+         console.log(odd);
+         console.log(even);
+//4.3  求1-100中能被3整除的和
+         var sum = 0;
+         for (var i = 0; i &lt;= 100; i++) {
+             if (i % 3 == 0) {
+                 sum += i;
+             }
+         }
+         console.log(sum);
+//4.4  需求根据用户输入的班级人数和每个学生成绩,计算总成绩和平均值
+          let sum = 0;
+          let average = 0;
+          let people = prompt(&#39;请输入班级人数&#39;);
+          for (var i = 1; i &lt;= people; i++) {
+              let score = prompt(&#39;请输入第&#39; + i + &#39;个学生成绩&#39;);
+              sum += Number(score);
+          }
+          alert(&#39;此班总成绩是&#39; + sum);
+          alert(&#39;此班平均值是&#39; + sum / people);
+//4.5   一行打印5个星星
+         let str = &#39;&#39;;
+         for (var i = 1; i &lt;= 5; i++) {
+             str += &#39;⭐&#39;;
+         }
+         console.log(str);
+
+//4.6   打印5行5列的星星
+        let str = &#39;&#39;;
+        for (var i = 1; i &lt;= 5; i++) {
+            for (var j = 1; j &lt;= 5; j++) {
+                str += &#39;⭐&#39;;
+            }
+            str += &#39;\n&#39;
+        }
+        console.log(str);
+
+//4.7    打印n行n列
+         let row = prompt(&#39;请输入行数&#39;);
+         let col = prompt(&#39;请输入列数&#39;);
+         let str = &#39;&#39;
+         for (var j = 1; j &lt;= row; j++) {
+             for (var i = 1; i &lt;= col; i++) {
+                 str += &#39;♥&#39;;
+             }
+             str += &#39;\n&#39;
+         }
+         console.log(str);
+//4.8   打印正三角
+          str = &#39;&#39;;
+          for (var i = 1; i &lt;= 10; i++) {
+              str += &#39;⭐&#39;;
+              console.log(str);
+
+          }
+        //打印倒三角,外层循环行数,内层循环列数
+              let str = &#39;&#39;;
+              for (var i = 1; i &lt;= 10; i++) {
+                  for (var j = i; j &lt;= 10; j++){
+                      str+=&#39;⭐&#39;;
+                  }
+                  str+=&#39;\n&#39;;
+             }
+             console.log(str);
+//4.9 99乘法表的打印
+            let str = &#39;&#39;;
+            for (var i = 1; i &lt;= 9; i++) {
+                for (var j = 1; j &lt;= i; j++) {
+                    str += i + &#39;x&#39; + j + &#39;=&#39; + i * j +&#39;\t&#39;
+                }
+                str+=&#39;\n&#39;;
+            }
+            console.log(str);
+**</code></pre>
+<h2 id="5-while-循环的使用"><a href="#5-while-循环的使用" class="headerlink" title="5.while 循环的使用"></a>5.while 循环的使用</h2><pre><code class="javascript">  //计算1-100所有整数的和
+          var sum = 0;
+          var num = 1;
+          while (num &lt;= 100) {
+              sum += num;
+              num++;
+          }
+          console.log(sum);
+    //不满足条件使劲弹出
+         var message = prompt(&#39;你爱我吗&#39;);
+         while (message !== &#39;爱&#39;) {
+             message = prompt(&#39;你爱我吗&#39;);
+         }
+         alert(&#39;我也爱你啊&#39;)
+
+**</code></pre>
+<h2 id="6-do-while-循环的使用"><a href="#6-do-while-循环的使用" class="headerlink" title="6.do while 循环的使用"></a>6.do while 循环的使用</h2><pre><code class="javascript">  //计算1-100所有整数的和
+          var sum = 0;
+         var i=1;
+         var sum=0;
+         do{
+             sum+=i;
+             i++
+         }while(i&lt;=100)
+         console.log(sum);
+    //不满足条件使劲弹出
+         var message=prompt(&#39;你爱我吗&#39;);
+         do{
+           message=prompt(&#39;你爱我吗&#39;);
+         }while(message!==&#39;爱&#39;)
+
+**</code></pre>
+<h2 id="6-continue-和-break-的用法"><a href="#6-continue-和-break-的用法" class="headerlink" title="6.continue 和 break 的用法"></a>6.continue 和 break 的用法</h2><pre><code class="javascript">   for (var i = 1; i &lt;= 5; i++) {
+            if (i == 3) {
+                continue;//减去i==3,继续执行
+            }
+            console.log(i);
+        }
+    //求出1-100中7的倍数的值的和
+        var sum = 0;
+        for (var i = 1; i &lt;= 100; i++) {
+            if (i % 7 == 0) {
+                break;
+            }
+            sum += i;
+        }
+        console.log(sum);
+    //continue,跳出本次循环,继续下次循环,break,直接跳出循环不在执行下面的循环
+
+**</code></pre>
+<p>**</p>
+<h2 id="7-循环中的算法使用"><a href="#7-循环中的算法使用" class="headerlink" title="7.循环中的算法使用"></a>7.循环中的算法使用</h2><pre><code class="javascript">//读取数组中的值
+var arr = [&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;, &#39;马六&#39;]
+for (var i = 0; i &lt; arr.length; i++) {
+  console.log(arr[i])
+}
+
+//求数组中值的和以及平均值
+var arr = [2, 6, 1, 7, 4]
+var sum = 0
+var average = 0
+for (var i = 0; i &lt; arr.length; i++) {
+  sum += arr[i]
+}
+average = sum / arr.length
+console.log(sum)
+console.log(average)
+
+//求数组中最大值
+var arr = [2, 6, 1, 7, 4]
+var max = arr[0]
+for (var i = 1; i &lt; arr.length; i++) {
+  if (arr[i] &gt; max) {
+    max = arr[i]
+  }
+}
+console.log(max)
+
+//数组中将分隔符,换成|
+var arr = [&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;, &#39;马六&#39;]
+var str = &#39;&#39;
+var sbr = &#39;|&#39;
+for (var i = 0; i &lt; arr.length; i++) {
+  str += arr[i] + sbr
+}
+console.log(str)
+//根据筛选条件得到新数组
+var newarr = []
+var arr = [2, 4, 6, 78, 9, 0, 34]
+for (var i = 0; i &lt; arr.length; i++) {
+  if (arr[i] &gt; 10) {
+    newarr[newarr.length] = arr[i]
+  }
+}
+console.log(newarr)
+
+//翻转数组
+var arr = [&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;, &#39;马六&#39;]
+var newarr = []
+for (var i = arr.length - 1; i &gt;= 0; i--) {
+  newarr[newarr.length] = arr[i]
+}
+console.log(newarr)
+//冒泡排序(大到小)
+var arr = [2, 4, 6, 8, 9, 3, 1, 0]
+for (var i = 0; i &lt; arr.length - 1; i++) {
+  for (var j = 0; j &lt;= arr.length - i - 1; j++) {
+    if (arr[j] &lt; arr[j + 1]) {
+      var temp = arr[j]
+      arr[j] = arr[j + 1]
+      arr[j + 1] = temp
+    }
+  }
+}
+console.log(arr)</code></pre>
+<p>**</p>
+<h2 id="8-将一些算法封装成函数"><a href="#8-将一些算法封装成函数" class="headerlink" title="8.将一些算法封装成函数"></a>8.将一些算法封装成函数</h2><pre><code class="javascript">//求和
+function getSum(num1, num2) {
+  return num1 + num2
+}
+console.log(getSum(2, 3))
+
+//求最大值
+function getMax(max1, max2) {
+  return max1 &gt; max2 ? max1 : max2
+}
+console.log(getMax(4, 6))
+
+//伪数组的最大值
+function getMax() {
+  var max = arguments[0]
+  for (var i = 0; i &lt; arguments.length; i++) {
+    if (max &lt; arguments[i]) {
+      max = arguments[i]
+    }
+  }
+  return max
+}
+console.log(getMax(2, 4, 6, 8, 9, 3, 1, 0))
+
+//获取新数组的值
+function getArr() {
+  var newarr = []
+  for (var i = arguments.length - 1; i &gt;= 0; i--) {
+    newarr[newarr.length] = arguments[i]
+  }
+  return newarr
+}
+var res = getArr(&#39;pink&#39;, &#39;purple&#39;, &#39;blue&#39;, &#39;red&#39;)
+console.log(res)
+
+//冒泡排序
+function getArr() {
+  for (var i = 0; i &lt; arguments.length - 1; i++) {
+    for (var j = 0; j &lt; arguments.length - i - 1; j++) {
+      if (arguments[j] &lt; arguments[j + 1]) {
+        var temp = arguments[j]
+        arguments[j] = arguments[j + 1]
+        arguments[j + 1] = temp
+      }
+    }
+  }
+  return arguments
+}
+console.log(getArr(1, 2, 3, 4, 5, 6))
+
+//平闰年
+function getYear(year) {
+  if ((year % 4 == 0 &amp;&amp; year % 100 != 0) || year % 400 == 0) {
+    alert(&#39;闰年,2月份29天&#39;)
+  } else {
+    alert(&#39;平年,2月份28天&#39;)
+  }
+}
+getYear(prompt(&#39;请输入年份&#39;))</code></pre>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tao Wen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/02/02/js%E5%9F%BA%E7%A1%80%E4%B8%AD%E7%9A%84%E6%A6%82%E8%A6%81%E6%A1%88%E4%BE%8B%E7%BB%9F%E8%AE%A1/">http://yoursite.com/2020/02/02/js%E5%9F%BA%E7%A1%80%E4%B8%AD%E7%9A%84%E6%A6%82%E8%A6%81%E6%A1%88%E4%BE%8B%E7%BB%9F%E8%AE%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">TAOTAO</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="http://attach.bbs.miui.com/forum/201309/13/194337seg4g43ggi9r4ge4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/02/13/JS%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/"><img class="prev_cover lazyload" data-src="http://img.daimg.com/uploads/allimg/200407/3-20040G64U6.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JS 常见操作</div></div></a></div><div class="next-post pull_right"><a href="/2019/01/13/link/"><img class="next_cover lazyload" data-src="/img/post.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">links</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Tao Wen</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js" ></script><script src="/js/utils.js" ></script><script src="/js/main.js" ></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script></body></html>
