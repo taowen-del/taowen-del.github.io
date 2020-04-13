@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://taowen-del.github.io/movies/index.html</loc>
+    <loc>https://taowen-del.github.io/messageboard/index.html</loc>
     
-    <lastmod>2020-04-13T14:25:35.794Z</lastmod>
+    <lastmod>2020-04-13T14:47:28.587Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taowen-del.github.io/2020/02/13/JS%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2020-04-13T14:34:16.577Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://taowen-del.github.io/categories/index.html</loc>
     
-    <lastmod>2020-04-13T14:22:53.426Z</lastmod>
+    <lastmod>2020-04-13T14:28:30.850Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://taowen-del.github.io/music/index.html</loc>
+    <loc>https://taowen-del.github.io/movies/index.html</loc>
     
-    <lastmod>2020-04-13T14:22:16.990Z</lastmod>
+    <lastmod>2020-04-13T14:25:35.794Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>https://taowen-del.github.io/about.html</loc>
     
     <lastmod>2020-04-10T13:28:18.903Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taowen-del.github.io/2020/02/13/JS%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</loc>
-    
-    <lastmod>2020-04-10T13:22:28.122Z</lastmod>
     
   </url>
   
