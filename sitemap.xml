@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://taowen-del.github.io/movies/index.html</loc>
+    
+    <lastmod>2020-04-13T14:25:35.794Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taowen-del.github.io/categories/index.html</loc>
+    
+    <lastmod>2020-04-13T14:22:53.426Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://taowen-del.github.io/music/index.html</loc>
     
-    <lastmod>2020-04-13T14:02:12.709Z</lastmod>
+    <lastmod>2020-04-13T14:22:16.990Z</lastmod>
     
   </url>
   
